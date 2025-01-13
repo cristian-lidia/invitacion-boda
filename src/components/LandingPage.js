@@ -62,8 +62,8 @@ const LandingPage = ({ onEnter }) => {
         <Typography variant="h5">Bienvenidos a la invitación de</Typography>
         <NamesContainer>
           <BackgroundSymbol variant="h2">&</BackgroundSymbol>
-          <NameTypography variant="h3">Fran</NameTypography>
-          <NameTypography variant="h3">Laura</NameTypography>
+          <NameTypography variant="h3">Cristian</NameTypography>
+          <NameTypography variant="h3">Lidia</NameTypography>
         </NamesContainer>
       </>
       <Typography variant="subtitle1">
