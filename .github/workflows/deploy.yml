@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -38,8 +39,8 @@ jobs:
 
       - name: Configure Git
         run: |
-          git config --global user.name "Fran"
-          git config --global user.email "francaste2@gmail.com"
+          git config --global user.name "cristian-lidia"
+          git config --global user.email "cristianlidia31052025@gmail.com"
 
       - name: Deploy to GitHub Pages
         run: npm run deploy

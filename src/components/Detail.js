@@ -13,18 +13,19 @@ import FileCopyIcon from "@mui/icons-material/FileCopy";
 import CardGiftcardIcon from "@mui/icons-material/CardGiftcard";
 import { CardComponent } from "./cards/CardComponent";
 import { CardIcon } from "./cards/CardIcon";
+import { THEME_COLORS } from "../theme/colors";
 
 const ThankYouText = styled(Typography)({
-  color: "#855D41",
+  color: THEME_COLORS.text,
 });
 
 const DetailButton = styled(Button)({
-  backgroundColor: "#d28e79",
+  backgroundColor: THEME_COLORS.accent,
   color: "#fff",
   width: "80%",
   marginTop: "20px",
   "&:hover": {
-    backgroundColor: "#b36b53",
+    backgroundColor: THEME_COLORS.buttonHover,
   },
 });
 
@@ -35,9 +36,9 @@ const ModalContainer = styled(Box)({
   transform: "translate(-50%, -50%)",
   width: "90%",
   maxWidth: "400px",
-  backgroundColor: "#fff",
+  backgroundColor: THEME_COLORS.background,
   borderRadius: "10px",
-  boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+  boxShadow: `0 4px 6px ${THEME_COLORS.accent}20`,
   padding: "30px",
   textAlign: "center",
 });
@@ -46,38 +47,33 @@ const CloseButton = styled(IconButton)({
   position: "absolute",
   top: "10px",
   right: "10px",
+  color: THEME_COLORS.text,
 });
 
 const CopyMessage = styled(Typography)({
-  color: "#855D41",
+  color: THEME_COLORS.primary,
   fontSize: "0.8rem",
   marginTop: "10px",
 });
 
 const GiftIcon = styled(CardGiftcardIcon)({
   fontSize: "2rem",
-  color: "#d28e79",
+  color: THEME_COLORS.iconColors,
 });
 
 const TitleText = styled(Typography)({
   fontWeight: "bold",
   fontSize: "1.5rem",
   marginTop: "2px",
-  color: "#855D41",
+  color: THEME_COLORS.secondary,
 });
-
-const accountNumberENV = process.env.REACT_APP_ACCOUNT_NUMBER;
-
-if (!accountNumberENV) {
-  console.error("REACT_APP_ACCOUNT_NUMBER no está definido");
-}
 
 const Detail = () => {
   const [open, setOpen] = useState(false);
-  const [accountNumber] = useState(accountNumberENV || "");
+  const [accountNumber] = useState(process.env.REACT_APP_ACCOUNT_NUMBER || "");
   const [copyMessage, setCopyMessage] = useState("");
 
-  const formattedAccountNumber = accountNumber.replace(/(.{4})/g, "$1 "); // Formatea con espacios cada 4 dígitos
+  const formattedAccountNumber = accountNumber.replace(/(.{4})/g, "$1 ");
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -85,7 +81,7 @@ const Detail = () => {
   const handleCopyAccountNumber = () => {
     navigator.clipboard.writeText(accountNumber);
     setCopyMessage("Número de cuenta copiado al portapapeles");
-    setTimeout(() => setCopyMessage(""), 3000); // El mensaje desaparece después de 3 segundos
+    setTimeout(() => setCopyMessage(""), 3000);
   };
 
   return (
@@ -109,13 +105,13 @@ const Detail = () => {
           </CardIcon>
           <Typography
             variant="h6"
-            sx={{ fontWeight: "bold", color: "#855D41", marginBottom: "20px" }}
+            sx={{ fontWeight: "bold", color: THEME_COLORS.secondary, marginBottom: "20px" }}
           >
             Nuestro mayor regalo es vuestra presencia
           </Typography>
           <Typography
             variant="body1"
-            sx={{ marginBottom: "20px", color: "#855D41" }}
+            sx={{ marginBottom: "20px", color: THEME_COLORS.text }}
           >
             Y, si en el caso, quieres tener un detalle con nosotros, puedes
             aportar aquí:
@@ -133,23 +129,33 @@ const Detail = () => {
               fontSize="small"
               variant="outlined"
               value={formattedAccountNumber}
-              InputProps={{ readOnly: true }}
+              InputProps={{ 
+                readOnly: true,
+                sx: { color: THEME_COLORS.text }
+              }}
               sx={{
                 fontSize: "0.875rem",
-                whiteSpace: "normal", // Permitir que el texto salte de línea
-                wordBreak: "break-all", // Permitir el salto de palabra para evitar el desbordamiento
+                whiteSpace: "normal",
+                wordBreak: "break-all",
+                '& .MuiOutlinedInput-root': {
+                  '& fieldset': {
+                    borderColor: `${THEME_COLORS.accent}40`,
+                  },
+                  '&:hover fieldset': {
+                    borderColor: THEME_COLORS.accent,
+                  },
+                },
               }}
-              multiline // Permitir múltiples líneas
+              multiline
             />
-            <IconButton onClick={handleCopyAccountNumber}>
+            <IconButton 
+              onClick={handleCopyAccountNumber}
+              sx={{ color: THEME_COLORS.accent }}
+            >
               <FileCopyIcon />
             </IconButton>
           </Box>
-          {copyMessage && (
-            <>
-              <CopyMessage>{copyMessage}</CopyMessage>
-            </>
-          )}
+          {copyMessage && <CopyMessage>{copyMessage}</CopyMessage>}
         </ModalContainer>
       </Modal>
     </>

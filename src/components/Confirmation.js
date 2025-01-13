@@ -18,20 +18,22 @@ import busGif from "../assets/bus.gif"; // Asegúrate de que la ruta es correcta
 import { launchConfetti } from "./utils/confeti";
 import { CardComponent } from "./cards/CardComponent";
 import { CardIcon } from "./cards/CardIcon";
+import { THEME_COLORS } from "../theme/colors";
+
 
 const TitleText = styled(Typography)({
   fontWeight: "bold",
   fontSize: "1.5rem",
-  color: "#855D41",
+  color: THEME_COLORS.secondary,
 });
 
 const ConfirmButton = styled(Button)({
-  backgroundColor: "#d28e79",
+  backgroundColor: THEME_COLORS.accent,
   color: "#fff",
   width: "80%",
   marginTop: "20px",
   "&:hover": {
-    backgroundColor: "#b36b53",
+    backgroundColor: THEME_COLORS.buttonHover,
   },
 });
 
@@ -43,9 +45,9 @@ const ModalContainer = styled(Box)({
   width: "90%",
   maxWidth: "400px",
   maxHeight: "90%",
-  backgroundColor: "#fff",
+  backgroundColor: THEME_COLORS.background,
   borderRadius: "10px",
-  boxShadow: "0 4px 6px rgba(0,0,0,0.1)",
+  boxShadow: `0 4px 6px ${THEME_COLORS.accent}20`,
   padding: "30px",
   textAlign: "center",
   display: "flex",
@@ -65,7 +67,7 @@ const CloseButton = styled(IconButton)({
 });
 
 const IconButtonStyled = styled(IconButton)({
-  color: "#d28e79",
+  color: THEME_COLORS.accent,
   margin: "20px",
   display: "flex",
   flexDirection: "column",
@@ -74,12 +76,12 @@ const IconButtonStyled = styled(IconButton)({
 
 const VerifiedIconStyled = styled(VerifiedIcon)({
   fontSize: "2rem",
-  color: "#d28e79",
+  color: THEME_COLORS.iconColors,
 });
 
 const ConfirmationIcon = styled(LocalActivityIcon)({
   fontSize: "2rem",
-  color: "#d28e79",
+  color: THEME_COLORS.iconColors,
 });
 
 const Confirmation = () => {
@@ -128,7 +130,7 @@ const Confirmation = () => {
         <TitleText>¡Allí nos vemos!</TitleText>
         <Typography
           variant="body1"
-          sx={{ marginTop: "20px", color: "#855D41" }}
+          sx={{ marginTop: "20px", color: THEME_COLORS.text }}
         >
           Estamos agradecidos con tu presencia y nos encantará contar con
           vosotros en ese día tan especial.
@@ -145,92 +147,39 @@ const Confirmation = () => {
           </CardIcon>
           <Typography
             variant="h6"
-            sx={{ fontWeight: "bold", color: "#855D41" }}
+            sx={{ fontWeight: "bold", color: THEME_COLORS.secondary }}
           >
             ¡Gracias por venir!
           </Typography>
           <ModalContent ref={contentRef}>
-            <Typography
-              variant="body1"
-              sx={{ marginBottom: "20px", color: "#855D41" }}
-            >
-              Y ... como queremos que no te preocupes por nada. Habrá autobús
-              para ir al evento y varios turnos de vuelta.
-            </Typography>
-            <Typography
-              variant="body2"
-              sx={{ marginBottom: "30px", color: "#855D41" }}
-            >
-              ¿Necesitas transporte?, sólo marca la casilla.
-            </Typography>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                marginBottom: "20px",
-              }}
-            >
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={needsTransport}
-                    onChange={() => setNeedsTransport(!needsTransport)}
-                  />
-                }
-                label="Necesito transporte"
-              />
-            </Box>
-            {needsTransport && (
-              <>
-                <Typography
-                  variant="body1"
-                  sx={{ marginBottom: "20px", color: "#855D41" }}
-                >
-                  ¡Nosotros te llevamos!
-                </Typography>
-                <img
-                  src={busGif}
-                  alt="Autobús"
-                  style={{
-                    width: "100%",
-                    height: "auto",
-                    marginBottom: "20px",
-                  }}
-                />
-              </>
-            )}
+            
             <Typography
               variant="h6"
-              sx={{ marginBottom: "20px", color: "#855D41" }}
+              sx={{ marginBottom: "20px", color: THEME_COLORS.secondary }}
             >
               Confirmar asistencia con ...
             </Typography>
             <Box sx={{ display: "flex", justifyContent: "center" }}>
               <IconButtonStyled
-                onClick={() => handleSendMessage(`+34${phoneNumberFran}`)}
+                onClick={() => handleSendMessage(`${phoneNumberFran}`)}
               >
-                {" "}
-                {/* Reemplaza con el número del novio */}
                 <AccountCircleIcon sx={{ fontSize: "4rem" }} />
                 <Typography
                   variant="body2"
-                  sx={{ color: "#855D41", marginTop: "10px" }}
+                  sx={{ color: THEME_COLORS.text, marginTop: "10px" }}
                 >
-                  Fran
+                  Cristian
                 </Typography>
               </IconButtonStyled>
               <IconButtonStyled
-                onClick={() => handleSendMessage(`+34${phoneNumberLaura}`)}
+                onClick={() => handleSendMessage(`${phoneNumberLaura}`)}
               >
-                {" "}
-                {/* Reemplaza con el número de la novia */}
                 <PersonIcon sx={{ fontSize: "4rem" }} />
                 <Typography
                   variant="body2"
-                  sx={{ color: "#855D41", marginTop: "10px" }}
+                  sx={{ color: THEME_COLORS.text, marginTop: "10px" }}
                 >
-                  Laura
+                  Lidia
                 </Typography>
               </IconButtonStyled>
             </Box>

@@ -8,10 +8,11 @@ import Ceremony from "./Ceremony";
 import Party from "./Party";
 import Confirmation from "./Confirmation";
 import Detail from "./Detail";
-import backgroundImage from "../assets/fran-laura-cl.jpg"; // Asegúrate de que la ruta sea correcta
+import backgroundImage from "../assets/cabecera.jpg"; // Asegúrate de que la ruta sea correcta
 import quotes from "../assets/quotes.png";
 import musicFile from "../assets/music.mp3"; // Asegúrate de que la ruta sea correcta
 import "../styles.css"; // Asegúrate de importar el CSS aquí
+import { THEME_COLORS } from '../theme/colors';
 
 const MainContainer = styled(Box)({
   display: "flex",
@@ -19,22 +20,23 @@ const MainContainer = styled(Box)({
   alignItems: "center",
   justifyContent: "flex-start",
   minHeight: "100vh",
-  background: "#fff",
+  background: THEME_COLORS.background,
   textAlign: "center",
   padding: "0 20px",
   fontFamily: "'Cinzel', serif",
-  color: "#855D41",
+  color: THEME_COLORS.text,
   position: "relative",
 });
 
 const BackgroundImageContainer = styled(Box)({
-  width: "100vw", // Ocupar todo el ancho de la ventana
-  height: "40vh", // Ajusta la altura según necesites
-  background: `url(${backgroundImage}) no-repeat center center`,
+  width: "100vw",
+  height: "50vh",
+  background: `url(${backgroundImage}) no-repeat center 25%`,
   backgroundSize: "cover",
   clipPath: "polygon(0 0, 100% 0, 100% 85%, 0 100%)",
   position: "relative",
-  marginBottom: "-5vh", // Solapar un poco la imagen de los novios
+  marginBottom: "-5vh",
+  boxShadow: '0 2px 10px rgba(42, 45, 52, 0.15)',
 });
 
 const ContentBox = styled(Box)({
@@ -47,8 +49,8 @@ const ContentBox = styled(Box)({
 const AmpersandSymbol = styled(Typography)({
   position: "absolute",
   fontSize: "10rem",
-  color: "#855D41",
-  opacity: 0.1,
+  color: THEME_COLORS.primary,
+  opacity: 0.12,
   top: "60%",
   left: "50%",
   transform: "translate(-50%, -50%)",
@@ -58,27 +60,32 @@ const AmpersandSymbol = styled(Typography)({
 const DateTypography = styled(Typography)({
   marginTop: "20px",
   padding: "0 10px",
-  borderTop: "2px solid #855D41", // Borde superior
-  borderBottom: "2px solid #855D41", // Borde inferior
-  display: "inline-block", // Para ajustar el ancho del borde a solo el contenido
+  borderTop: `2px solid ${THEME_COLORS.accent}`,
+  borderBottom: `2px solid ${THEME_COLORS.accent}`,
+  display: "inline-block",
+  color: THEME_COLORS.secondary,
+  letterSpacing: "2px",
 });
 
 const DateTypographyBottom = styled(Typography)({
   marginTop: "20px",
   padding: "0 10px",
-  borderTop: "2px solid #855D41", // Borde superior
-  borderBottom: "2px solid #855D41", // Borde inferior
-  display: "inline-block", // Para ajustar el ancho del borde a solo el contenido
+  borderTop: `2px solid ${THEME_COLORS.accent}`,
+  borderBottom: `2px solid ${THEME_COLORS.accent}`,
+  display: "inline-block",
+  color: THEME_COLORS.text,
+  opacity: 0.7,
 });
 
 const FloatingButton = styled(IconButton)(({ musicPlaying }) => ({
   position: "fixed",
   bottom: "20px",
   right: "20px",
-  backgroundColor: "#d28e79",
-  color: "#fff",
+  backgroundColor: THEME_COLORS.accent,
+  color: '#FFFFFF',
+  boxShadow: '0 2px 8px rgba(42, 45, 52, 0.2)',
   "&:hover": {
-    backgroundColor: "#b36b53",
+    backgroundColor: THEME_COLORS.buttonHover,
   },
   animation: musicPlaying ? "heartbeat 4.5s infinite" : "none",
 }));
@@ -106,7 +113,7 @@ const MainPage = () => {
     <MainContainer>
       <BackgroundImageContainer />
       <DateTypography style={{ marginTop: "24%" }} variant="h6">
-        27.09.2024
+        31.05.2025
       </DateTypography>
       <ContentBox>
         <AmpersandSymbol>&</AmpersandSymbol>
@@ -118,9 +125,11 @@ const MainPage = () => {
             position: "relative",
             zIndex: 1,
             marginTop: 2,
+            color: THEME_COLORS.secondary,
+            textShadow: `2px 2px 4px ${THEME_COLORS.accent}30`,
           }}
         >
-          FRAN
+          CRISTIAN
         </Typography>
         <Typography
           variant="h2"
@@ -129,24 +138,31 @@ const MainPage = () => {
             fontSize: "3rem",
             position: "relative",
             zIndex: 1,
+            color: THEME_COLORS.secondary,
+            textShadow: `2px 2px 4px ${THEME_COLORS.accent}30`,
           }}
         >
-          LAURA
+          LIDIA
         </Typography>
       </ContentBox>
       <Box mt={4}>
         <img src={quotes} alt="quotes" width={"40px"} />
         <Typography
           variant="subtitle1"
-          sx={{ fontStyle: "italic", position: "relative", zIndex: 1 }}
+          sx={{ 
+            fontStyle: "italic", 
+            position: "relative", 
+            zIndex: 1,
+            color: THEME_COLORS.text,
+            letterSpacing: "0.5px",
+          }}
         >
-          Todos somos mortales, hasta el primer beso y la segunda copa de vino.
+          Necesito que me digas esa frase que tengo que poner aqui algo
         </Typography>
         <img src={quotes} alt="quotes2" width={"40px"} style={{ rotate: "180deg" }} />
       </Box>
-      <Countdown eventDate="2024-09-27T19:30:00" />
+      <Countdown eventDate="2025-05-31T19:00" />
       <Ceremony id="ceremony" />
-      <Party id="party" />
       <Confirmation id="confirmation" />
       <Detail id="detail" />
       <DateTypographyBottom

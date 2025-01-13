@@ -7,10 +7,11 @@ import DirectionsIcon from '@mui/icons-material/Directions';
 import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import { CardComponent } from './cards/CardComponent';
 import { CardIcon } from './cards/CardIcon';
+import { THEME_COLORS } from '../theme/colors';
 
 const CeremonyIcon = styled(EventAvailableIcon)({
   fontSize: '2rem',
-  color: '#d28e79',
+  color: THEME_COLORS.iconColors,
 });
 
 const Section = styled(Box)({
@@ -20,10 +21,10 @@ const Section = styled(Box)({
 const Ceremony = () => {
   const handleAddToCalendar = () => {
     const event = {
-      title: 'Boda Fran y Laura - El Invernadero Eventos, Benicassim',
-      start: '2024-09-27T19:30:00',
-      end: '2024-09-28T04:30:00',
-      location: 'El Invernadero - Arrecife, Av. Gimeno Tomas, 36, 12560 Benicàssim, Castellón',
+      title: 'Boda Cristian y Lidia - Torre la mina',
+      start: '2025-05-31T19:00:00',
+      end: '2025-06-01T04:30:00',
+      location: 'Camí la regenta 1, 12539 Les Alqueries, Castellón - Torre la mina',
     };
 
     const calendarUrl = new URL('https://www.google.com/calendar/render');
@@ -36,41 +37,68 @@ const Ceremony = () => {
   };
 
   return (
-    <>
-      <CardComponent>
-        <CardIcon>
-          <CeremonyIcon />
-        </CardIcon>
-        <Section marginTop={2}>
-        <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#855D41' }}>DÍA</Typography>
-          <Typography variant="body1">Viernes 27 de Septiembre - 19.30h</Typography>
-          <Button
-            variant="contained"
-            sx={{ marginTop: '10px', backgroundColor: '#d28e79', color: '#fff', width: '80%' }}
-            onClick={handleAddToCalendar}
-            startIcon={<AddAlarmIcon />}
-          >
-            Agendar
-          </Button>
-        </Section>
-        <Section marginTop={5}>
-        <LocationOnIcon sx={{ color: '#d28e79', fontSize: '2rem', marginBottom: '10px' }} />
-        <Typography variant="h6" sx={{ fontWeight: 'bold', color: '#855D41' }}>LUGAR</Typography>
-          <Typography variant="body1">El Invernadero - Arrecife</Typography>
-          <Typography variant="body1">Benicassim</Typography>
-          <Button
-            variant="contained"
-            sx={{ marginTop: '10px', backgroundColor: '#d28e79', color: '#fff', width: '80%' }}
-            href="https://www.google.com/maps/place/El+Invernadero+-+Arrecife/@40.0462533,0.0507617,17z/data=!3m1!4b1!4m6!3m5!1s0x12a00148bd6b6d67:0x424c4ff8aff7195a!8m2!3d40.0462533!4d0.0507617!16s%2Fg%2F11rfr957rw?entry=ttu"
-            target="_blank"
-            rel="noopener noreferrer"
-            startIcon={<DirectionsIcon />}
-          >
-            Cómo llegar
-          </Button>
-        </Section>
-      </CardComponent>
-    </>
+    <CardComponent>
+      <CardIcon>
+        <CeremonyIcon />
+      </CardIcon>
+      <Section marginTop={2}>
+        <Typography variant="h6" sx={{ fontWeight: 'bold', color: THEME_COLORS.secondary }}>
+          DÍA
+        </Typography>
+        <Typography variant="body1" sx={{ color: THEME_COLORS.text }}>
+          Viernes 31 de Mayo - 19:00h
+        </Typography>
+        <Button
+          variant="contained"
+          sx={{ 
+            marginTop: '10px', 
+            backgroundColor: THEME_COLORS.accent, 
+            color: '#fff', 
+            width: '80%',
+            '&:hover': {
+              backgroundColor: THEME_COLORS.buttonHover,
+            }
+          }}
+          onClick={handleAddToCalendar}
+          startIcon={<AddAlarmIcon />}
+        >
+          Agendar
+        </Button>
+      </Section>
+      <Section marginTop={5}>
+        <LocationOnIcon sx={{ color: THEME_COLORS.accent, fontSize: '2rem', marginBottom: '10px' }} />
+        <Typography variant="h6" sx={{ fontWeight: 'bold', color: THEME_COLORS.secondary }}>
+          LUGAR
+        </Typography>
+        <Typography variant="body1" sx={{ color: THEME_COLORS.text }}>
+          Torre la mina
+        </Typography>
+        <Typography variant="body1" sx={{ color: THEME_COLORS.text }}>
+          Camí la regenta 1
+        </Typography>
+        <Typography variant="body1" sx={{ color: THEME_COLORS.text }}>
+          12539 Les Alqueries, Castellón
+        </Typography>
+        <Button
+          variant="contained"
+          sx={{ 
+            marginTop: '10px', 
+            backgroundColor: THEME_COLORS.accent, 
+            color: '#fff', 
+            width: '80%',
+            '&:hover': {
+              backgroundColor: THEME_COLORS.buttonHover,
+            }
+          }}
+          href="https://www.google.es/maps/place/Torre+la+Mina/@39.8924843,-0.12692,17z/data=!3m1!4b1!4m9!3m8!1s0xd60043a2b7783e7:0x8913c54510e6a906!5m2!4m1!1i2!8m2!3d39.8924843!4d-0.1243397!16s%2Fg%2F1tdjybqb?hl=es&entry=ttu&g_ep=EgoyMDI1MDEwOC4wIKXMDSoASAFQAw%3D%3D"
+          target="_blank"
+          rel="noopener noreferrer"
+          startIcon={<DirectionsIcon />}
+        >
+          Cómo llegar
+        </Button>
+      </Section>
+    </CardComponent>
   );
 };
 

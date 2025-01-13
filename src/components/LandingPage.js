@@ -3,6 +3,7 @@ import { Box, Button, Typography } from "@mui/material";
 import { styled } from "@mui/system";
 import { motion } from "framer-motion";
 import floralHeader from "../assets/floral_cabecera.png";
+import { THEME_COLORS } from '../theme/colors';
 
 const LandingContainer = styled(Box)({
   display: "flex",
@@ -10,33 +11,35 @@ const LandingContainer = styled(Box)({
   alignItems: "center",
   justifyContent: "center",
   height: "100vh",
-  backgroundColor: "rgb(255, 245, 232)",
+  backgroundColor: THEME_COLORS.background,
   backgroundSize: "cover",
   textAlign: "center",
   padding: "0 20px",
   fontFamily: "'Cinzel', serif",
-  color: "#855D41", // Color marrón cálido
+  color: THEME_COLORS.text,
 });
 
 const LandingButton = styled(Button)({
   marginTop: "15px",
-  backgroundColor: "#d28e79", // Color de fondo del botón
-  color: "#fff",
+  backgroundColor: THEME_COLORS.buttonColor,
+  color: '#FFFFFF',
   fontFamily: "'Cinzel', serif",
+  padding: "10px 30px",
+  boxShadow: '0 2px 8px rgba(42, 45, 52, 0.15)',
   "&:hover": {
-    backgroundColor: "#b36b53", // Color de fondo del botón al pasar el ratón
+    backgroundColor: THEME_COLORS.buttonHover,
   },
 });
 
 const BackgroundSymbol = styled(Typography)({
   position: "absolute",
   fontSize: "15rem",
-  color: "#855D41",
-  opacity: 0.1,
+  color: THEME_COLORS.primary,
+  opacity: 0.12,
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  pointerEvents: "none", // Evitar interferencia con otros elementos
+  pointerEvents: "none",
 });
 
 const NamesContainer = styled(Box)({
@@ -46,29 +49,37 @@ const NamesContainer = styled(Box)({
   justifyContent: "center",
   position: "relative",
   zIndex: 1,
-  marginBottom: "20px", // Añadir espacio debajo de los nombres
+  marginBottom: "20px",
 });
 
 const NameTypography = styled(Typography)({
   fontSize: "8rem",
   fontFamily: "Cosmopolitan Script, sans-serif",
+  color: THEME_COLORS.secondary,
+  textShadow: `2px 2px 4px ${THEME_COLORS.accent}30`,
+  letterSpacing: "1px",
+});
+
+// Para los textos generales
+const StyledTypography = styled(Typography)({
+  color: THEME_COLORS.text,
+  letterSpacing: "0.5px",
 });
 
 const LandingPage = ({ onEnter }) => {
   return (
     <LandingContainer>
       <>
-        <img width={"110%"} alt="floralheader" src={floralHeader} />
-        <Typography variant="h5">Bienvenidos a la invitación de</Typography>
+        <StyledTypography variant="h5">Bienvenidos a la invitación de</StyledTypography>
         <NamesContainer>
           <BackgroundSymbol variant="h2">&</BackgroundSymbol>
           <NameTypography variant="h3">Cristian</NameTypography>
           <NameTypography variant="h3">Lidia</NameTypography>
         </NamesContainer>
       </>
-      <Typography variant="subtitle1">
+      <StyledTypography variant="subtitle1">
         La música de fondo es parte de la experiencia
-      </Typography>
+      </StyledTypography>
       <motion.div
         initial={{ opacity: 1 }}
         animate={{ opacity: 1 }}

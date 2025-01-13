@@ -2,7 +2,7 @@
   "name": "wedding-invitation",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://francaste2.github.io/wedding-invitation",
+  "homepage": "https://cristian-lidia.github.io/invitacion-boda",
   "dependencies": {
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
@@ -26,7 +26,7 @@
     "eject": "react-scripts eject",
     "env": "node env-config.js",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build -r https://${GH_PAT}@github.com/francaste2/wedding-invitation.git"
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
