@@ -42,7 +42,6 @@ jobs:
           git config --global user.email "cristianlidia31052025@gmail.com"
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+        run: npm run deploy
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
